@@ -8,8 +8,12 @@
     "node": ">=6.4.0"
   },
   "scripts": {
+    "start": "webpack-dev-server -d --config webpack.dev.config.js --progress --colors",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
+    "prod": "NODE_ENV=production node server.js",
+    "build": "webpack --config webpack.prod.config.js -p --progress --colors",
+    "postinstall": "webpack --config webpack.prod.config.js -p --progress --colors",
+    //"start": "node server/index.js",
     "seed-data": "node server/db/worker.js",
     "rmb": "rm /leplonger/client/dist/bundle.js",
     "test": "mocha test"
