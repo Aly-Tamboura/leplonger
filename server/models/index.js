@@ -1,10 +1,14 @@
 const connection = require('../db');
 const request = require('request');
+
+//remove for deployment
 const Api = require('../../keys');
+
 const Promise = require('bluebird');
 const axios = require('axios');
 const sha1 = require('sha1');
 const visUtils = require('../../visualization/visUtils.js');
+
 
 module.exports = {
   users: {
