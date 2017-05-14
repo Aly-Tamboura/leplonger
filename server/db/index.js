@@ -6,14 +6,13 @@ const keys = require('../../keys.js');
 // and to the database "chat".
 
 /*-----------DEPLOYMENT---------------------*/
+
 // const connection = mysql.createConnection({
 //   host: 'mydbinstance.cpg0q0lr1fiw.us-west-1.rds.amazonaws.com',
 //   user: 'masterUser',
 //   password: keys.dbpass,
 //   database: 'dive_team'
 // });
-/*-----------DEPLOYMENT---------------------*/
-
 
 const connection = mysql.createConnection({
   host: 'mydbinstance.cwegnsivr2ab.us-west-2.rds.amazonaws.com',
@@ -21,6 +20,7 @@ const connection = mysql.createConnection({
   password: keys.dbpass,
   database: 'dive_team'
 });
+
 
 
 /*-----------DEVELOPMENT---------------------*/
@@ -31,15 +31,18 @@ const connection = mysql.createConnection({
 //   database: 'dive_team'
 // });
 /*-----------DEVELOPMENT---------------------*/
+=======
+>>>>>>> test
 
 Promise.promisifyAll(connection);
 
- 
+
 connection.connect(function(err) {
   if (err) {
     console.error('Error connecting: ' + err.stack);
     return;
   }
+
   console.log('Connected to SQL as id ' + connection.threadId);
 });
 
