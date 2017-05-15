@@ -10,7 +10,6 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "start": "node server/index.js",
-    // "seed-data": "node server/db/worker.js",
     "rmb": "rm /leplonger/client/dist/bundle.js",
     "test": "mocha test",
   },
