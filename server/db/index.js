@@ -8,6 +8,7 @@ const Promise = require('bluebird');
 /*-----------DEPLOYMENT---------------------*/
 
 
+
 // const connection = mysql.createConnection({
 //   host: 'mydbinstance.cpg0q0lr1fiw.us-west-1.rds.amazonaws.com',
 //   user: 'masterUser',
