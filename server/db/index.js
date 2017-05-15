@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const password = require('./config.js');
 
 const Promise = require('bluebird');
-const keys = require('../../keys.js');
+//const keys = require('../../keys.js');
 
 // Create a database connection and export it from this file.
 // You will need to connect with the user "root", no password,
@@ -19,9 +19,9 @@ const keys = require('../../keys.js');
 
 
 const connection = mysql.createConnection({
-  host: 'mydbinstance.cwegnsivr2ab.us-west-2.rds.amazonaws.com',
+  host: process.env.DATABASE_URL,
   user: 'masterUser',
-  password: keys.dbpass,
+  password: process.env.password,
   database: 'dive_team'
 });
 
@@ -34,9 +34,7 @@ const connection = mysql.createConnection({
 //   password: '',
 //   database: 'dive_team'
 // });
-/*-----------DEVELOPMENT---------------------*/
-=======
->>>>>>> test
+
 
 Promise.promisifyAll(connection);
 

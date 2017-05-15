@@ -2,7 +2,7 @@ const connection = require('../db');
 const request = require('request');
 
 //remove for deployment
-const Api = require('../../keys');
+//const Api = require('../../keys');
 
 const Promise = require('bluebird');
 const axios = require('axios');
@@ -58,7 +58,7 @@ module.exports = {
     post: (new_sites, callback) => {
       let diveSite = [ new_sites.name, new_sites.longitude, new_sites.latitude, new_sites.rating, new_sites.description, new_sites.user_dive];
       let queryString = 'INSERT INTO dives( name, longitude, latitude, rating, description, user_dive ) VALUES ( ?, ?, ?, ?, ?, ?)';
-      
+
       connection.query(queryString, diveSite, function(err, data) {
         if (err) {
           console.log('could not post dive-sites to database');
@@ -103,7 +103,7 @@ module.exports = {
 
 
       const location = `${req.body.location.lat},${req.body.location.lng}`;
-      // const url = `http://api.wunderground.com/api/${Api.weatherUnderground}/geolookup/conditions/q/${location}.json`;
+      const url = `http://api.wunderground.com/api/${process.env.weatherUnderground}/geolookup/conditions/q/${location}.json`;
 
 
       axios.get(url)
@@ -122,22 +122,15 @@ module.exports = {
       const centralCalCoordinates = '35.3257,-120.9237';
       const southCalCoordinates = '37.8267,-122.4233';
 
-<<<<<<< HEAD
-      axios.get(`https://api.darksky.net/forecast/${Api.darkSky}/${norCalCoordinates}`)
-=======
-      //remove XXXXX for this to work
-<<<<<<< HEAD
       axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${norCalCoordinates}`)
->>>>>>> added dbpassword to process.env
-=======
-      axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${norCalCoordinates}`)
->>>>>>> change setting to run locally
+
+      axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${norCalCoordinates}`)
         .then( (result) => {
           homeWeather.push(result.data)
-          axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${centralCalCoordinates}`)
+          axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${centralCalCoordinates}`)
             .then( (result) => {
               homeWeather.push(result.data);
-              axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${southCalCoordinates}`)
+              axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${southCalCoordinates}`)
                 .then( (result) => {
                   homeWeather.push(result.data);
                   res.json(homeWeather);
