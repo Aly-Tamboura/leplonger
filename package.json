@@ -8,6 +8,7 @@
     "node": ">=6.4.0"
   },
   "scripts": {
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "react-dev": "webpack -d --watch",
     "start": "node server/index.js",
     "seed-data": "node server/db/worker.js",

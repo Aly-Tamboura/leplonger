@@ -104,8 +104,6 @@ module.exports = {
       const location = `${req.body.location.lat},${req.body.location.lng}`;
       // const url = `http://api.wunderground.com/api/${Api.weatherUnderground}/geolookup/conditions/q/${location}.json`;
 
-
-
       axios.get(url)
         .then( (result) => {
           console.log('received data from weatherUnderground');
@@ -122,13 +120,18 @@ module.exports = {
       const centralCalCoordinates = '35.3257,-120.9237';
       const southCalCoordinates = '37.8267,-122.4233';
 
+<<<<<<< HEAD
       axios.get(`https://api.darksky.net/forecast/${Api.darkSky}/${norCalCoordinates}`)
+=======
+      //remove XXXXX for this to work
+      axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${norCalCoordinates}`)
+>>>>>>> added dbpassword to process.env
         .then( (result) => {
           homeWeather.push(result.data)
-          axios.get(`https://api.darksky.net/forecast/${Api.darkSky}/${centralCalCoordinates}`)
+          axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${centralCalCoordinates}`)
             .then( (result) => {
               homeWeather.push(result.data);
-              axios.get(`https://api.darksky.net/forecast/${Api.darkSky}/${southCalCoordinates}`)
+              axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${southCalCoordinates}`)
                 .then( (result) => {
                   homeWeather.push(result.data);
                   res.json(homeWeather);
