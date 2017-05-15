@@ -101,8 +101,10 @@ module.exports = {
  //uncomment url for actual use, disabled so we don't hit api limit
     get: (req, res) => {
 
+
       const location = `${req.body.location.lat},${req.body.location.lng}`;
       // const url = `http://api.wunderground.com/api/${Api.weatherUnderground}/geolookup/conditions/q/${location}.json`;
+
 
       axios.get(url)
         .then( (result) => {
@@ -124,14 +126,18 @@ module.exports = {
       axios.get(`https://api.darksky.net/forecast/${Api.darkSky}/${norCalCoordinates}`)
 =======
       //remove XXXXX for this to work
+<<<<<<< HEAD
       axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${norCalCoordinates}`)
 >>>>>>> added dbpassword to process.env
+=======
+      axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${norCalCoordinates}`)
+>>>>>>> change setting to run locally
         .then( (result) => {
           homeWeather.push(result.data)
-          axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${centralCalCoordinates}`)
+          axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${centralCalCoordinates}`)
             .then( (result) => {
               homeWeather.push(result.data);
-              axios.get(`https://api.darksky.net/forecast/${process.env.darksky}/${southCalCoordinates}`)
+              axios.get(`https://api.darksky.net/forecast/${Api.darksky}/${southCalCoordinates}`)
                 .then( (result) => {
                   homeWeather.push(result.data);
                   res.json(homeWeather);
